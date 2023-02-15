@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import { CardActionArea } from "@mui/material";
 
 
-const ItemDetail = ({ id, product }) => {
+const ItemDetail = ({ id, data }) => {
     return <>
         <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
@@ -16,20 +16,20 @@ const ItemDetail = ({ id, product }) => {
             component="img"
             height="140"
             alt="green iguana"
-            image={product.image}
+            image={data.image}
             />
             <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-                {product.category} - 
+                {data.category} - 
             </Typography>    
             <Typography gutterBottom variant="h5" component="div">
-                {product.title}
+                {data.title}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-                $ {product.price}
+                $ {data.price}
             </Typography
             >
-            <NavLink to={`/item/${product.id}`}>
+            <NavLink to={`/item/${data.id}`}>
                 Detalles
             </NavLink>
             </CardContent>

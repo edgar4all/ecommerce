@@ -3,7 +3,7 @@ import axios from "axios";
 import ItemDetail from "../components/ItemDetail";
 
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = () => {
 
     const [products, setProducts] = useState([]);
 
@@ -12,20 +12,22 @@ const ItemListContainer = ({greeting}) => {
           setProducts(res.data)
         );
         console.log(products);
-    }, []); 
+    }, [products]); 
 
     
     return <>
         <div style={{ textAlign: "center", padding: "100px" }}>
             <h1>
-                {greeting}
+                Listado de productos
             </h1>
         </div>
 
         <div>
-        {products.map((product) => {
+        {products.map((prod) => {
             return (
-                <ItemDetail key={product.id} product={product} />
+                <>
+                 <ItemDetail key={prod.id} data={prod} />
+                </>
             );
         })}
         </div>

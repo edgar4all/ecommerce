@@ -12,7 +12,7 @@ const ItemDetailContainer = () => {
         axios(`https://fakestoreapi.com/products/${id}`).then((res) =>
           setProduct(res.data)
         );
-      }, []); 
+      }, [id]); 
 
     return <>
         <div style={{ textAlign: "center", padding: "100px" }}>
@@ -21,7 +21,7 @@ const ItemDetailContainer = () => {
             </h1>
         </div>
 
-        <ItemDetail key={product.id} product={product} />
+        <ItemDetail key={product.id} data={product} />
     </>
 }
 

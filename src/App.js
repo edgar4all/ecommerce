@@ -10,11 +10,10 @@ function App() {
     <Router>
       <div>    
         <NavBar />
-        <ItemListContainer greeting="Listado de productos" />
         <Routes>
-            <Route path="/item/:id" element={<ItemDetailContainer  />} />
             <Route path="/" element={<ItemListContainer />} />
             <Route path="/category/:id" element={<ItemListContainer />} />
+            <Route path="/item/:id" element={<ItemDetailContainer  />} />
         </Routes>
       </div>
     </Router>
