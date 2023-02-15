@@ -26,14 +26,10 @@ const NavBar = () => {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <a className="nav-link" href="/">Computadoras <span className="sr-only">(current)</span></a>
-            </li>
-
             {categories.map((category) => {
               return (
                 <li key={category}>
-                <Link to={`/detail/${category}`}  className="nav-link" >
+                <Link to={`/category/${category.trim().replace("'","").replace(" ","")}`}  className="nav-link" >
                   {category}
                 </Link>
                 </li>
