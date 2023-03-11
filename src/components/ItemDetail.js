@@ -12,26 +12,27 @@ const ItemDetail = ({ id, data }) => {
     return <>
         <Card sx={{ maxWidth: 345 }}>
         <CardActionArea>
+            <NavLink to={`/item/${data.id}`}>
+                
+                        
             <CardMedia
             component="img"
             height="140"
             alt="green iguana"
-            image={data.image}
+            image={data.img}
             />
+            </NavLink>
             <CardContent>
             <Typography gutterBottom variant="h5" component="div">
-                {data.category} - 
+                {data.categoria} - 
             </Typography>    
             <Typography gutterBottom variant="h5" component="div">
-                {data.title}
+                {data.producto}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-                $ {data.price}
-            </Typography
-            >
-            <NavLink to={`/item/${data.id}`}>
-                Detalles
-            </NavLink>
+                $ {data.precio}
+            </Typography>
+            
             </CardContent>
         </CardActionArea>
         </Card>
