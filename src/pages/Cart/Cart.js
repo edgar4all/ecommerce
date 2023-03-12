@@ -46,7 +46,7 @@ const CartPage= () => {
                     <TableRow>
                     <TableCell align="right">Cantidad</TableCell>
                     <TableCell align="right">Producto</TableCell>
-                    <TableCell>ID</TableCell>
+                    <TableCell align="right">ID</TableCell>
                     <TableCell align="right">Precio unitario</TableCell>
                     <TableCell align="right">SubTotal</TableCell>
                     <TableCell align="right">Quitar</TableCell>
@@ -69,7 +69,7 @@ const CartPage= () => {
                     </TableRow>
                     ))}
                     <TableRow>
-                        <TableCell colSpan={5}>TOTAL</TableCell>
+                        <TableCell align="right" colSpan={5}>TOTAL</TableCell>
                         <TableCell align="right">{ items.length >0 ? calculateTotal() : "$0"}</TableCell>
                     </TableRow>
                 </TableBody>
