@@ -6,6 +6,7 @@ import ItemListContainer from './pages/ItemListContainer';
 import ItemDetailContainer from './pages/ItemDetailContainer';
 import CategoryPage from './pages/categoryPage';
 import Shop from './pages/Shop/Shop';
+import Cart from './pages/Cart/Cart';
 import Error from './pages/Error';
 import {ItemsProvider} from './context/ItemsContext';
 
@@ -20,6 +21,7 @@ function App() {
             <Route path="/category/:id" element={<CategoryPage />} />
             <Route path="/item/:id" element={<ItemDetailContainer  />} />
             <Route path="/shop" element={<Shop />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path='*' element={<Error />} />
         </Routes>
       </div>

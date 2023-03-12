@@ -29,7 +29,7 @@ const Img = styled('img')({
 
   const addToCart = () => {
     if(items.indexOf(data) < 0) {
-      data.quantity=1;
+      data.quantity=2;
       setItems([...items, data]);
     }
     else{
