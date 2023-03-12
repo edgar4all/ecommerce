@@ -7,10 +7,12 @@ import ItemDetailContainer from './pages/ItemDetailContainer';
 import CategoryPage from './pages/categoryPage';
 import Shop from './pages/Shop/Shop';
 import Error from './pages/Error';
+import {ItemsProvider} from './context/ItemsContext';
 
 function App() {
   return (
     <Router>
+      <ItemsProvider>
       <div>    
         <NavBar />
         <Routes>
@@ -21,6 +23,7 @@ function App() {
             <Route path='*' element={<Error />} />
         </Routes>
       </div>
+      </ItemsProvider>
     </Router>
   );
 }

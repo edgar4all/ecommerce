@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import { CardActionArea } from "@mui/material";
 import { styled } from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import ButtonBase from '@mui/material/ButtonBase';
 import './itemDetail.css';
+import { useContext } from "react";
+import { ItemsContext } from "../context/ItemsContext";
+import { display } from "@mui/system";
 
 const Img = styled('img')({
     margin: 'auto',
@@ -18,31 +13,53 @@ const Img = styled('img')({
     maxHeight: '100%',
   });
 
-const ItemDetail = ({ id, data }) => {
+  const ItemDetail = ({ id, data }) => {
 
-  
+  const [count, setCount] = useState(0);
 
-  return <div class="text-center">    
+  const decrement= () => {
+    count >0 && setCount(count-1);
+  }
 
-  <div class="gx-5 shadow p-3 mb-50 bg-white rounded row">
-      <div class="col">
-        <img src={data.img} class="containerImagenItem" loading="lazy" alt="" />
+  const increment = () => {
+    (count < data.stock) && setCount(count +1 );
+  }
+
+  const [items,setItems] = useContext(ItemsContext);
+
+  const addToCart = () => {
+    if(items.indexOf(data) < 0) {
+      data.quantity=1;
+      setItems([...items, data]);
+    }
+    else{
+      //sumar al ya existente cantidad en 1 
+    }
+  }
+
+  return <div className="text-center">    
+
+  <div className="gx-5 shadow p-3 mb-50 bg-white rounded row">
+      <div className="col">
+        <img src={data.img} className="containerImagenItem" loading="lazy" alt="" />
       </div>
-      <div class="col ">
-          <div class="text-center">
+      <div className="col ">
+          <div className="text-center">
               <h1>{data.producto}</h1>
               <span>Codigo: {data.id}</span>
               <h3>Categoria: {data.categoria}</h3>
               <h3>Precio unitario: $ {data.precio}</h3>
-              <div>
-                <button disabled="" type="button" class="btn-lg btn-light bi bi-dash-circle-fill btn btn-primary">-</button>
-                <label class="fs-3 mx-4 text-success"> 0 </label>
-                <button disabled="" type="button" class="btn-lg btn-light btn-danger bi bi-plus-circle-fill btn btn-primary">+</button>
+              <div style={{display:"none"}}>
+                <button onClick={decrement} type="button" className="btn-lg btn-light bi bi-dash-circle-fill btn btn-primary"> - </button>
+                <label className="fs-3 mx-4 text-success"> {count} </label>
+                <button onClick={increment} type="button" className="btn-lg btn-light btn-danger bi bi-plus-circle-fill btn btn-primary"> + </button>
                   
               </div>
               <br/>
-              <button type="button" class="btn btn-outline-dark btn-sm m-1" disabled="">Stock: {data.stock} unidades.</button>                
-              <div class="text-center"><button disabled="" type="button" class="btn-success btn btn-primary">Agregar al Carrito</button></div>
+              <button style={{display:"none"}} type="button" className="btn btn-outline-dark btn-sm m-1" disabled="">Stock: {data.stock} unidades.</button>                
+              <div className="text-center">
+                <button onClick={addToCart} type="button" className="btn-success btn btn-primary">Agregar al Carrito</button>
+              </div>
           </div>
       </div>
   </div>
