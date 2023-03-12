@@ -1,19 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { Link, NavLink } from "react-router-dom";
 import CartWidget from "./CartWidget";
-import axios from "axios";
 
-
-const NavBar = () => {
-
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-      axios('https://fakestoreapi.com/products/categories').then((res) =>
-        setCategories(res.data)
-      );
-    }, []); 
-
+const NavBar = () => { 
     return <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         
@@ -25,16 +14,19 @@ const NavBar = () => {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-            {categories.map((category) => {
-              return (
-                <li key={category}>
-                <Link to={`/category/${category.trim().replace("'","").replace(" ","")}`}  className="nav-link" >
-                  {category}
-                </Link>
-                </li>
-              );
-            })}
+          <ul className="navbar-nav mr-auto">            
+            <li>
+              <Link to={`/category/perros`}  className="nav-link" >Perros</Link>            
+            </li>
+            <li>
+              <Link to={`/category/gatos`}  className="nav-link" >Gatos</Link>            
+            </li>
+            <li>
+              <Link to={`/category/accesorios`}  className="nav-link" >Accesorios</Link>            
+            </li>
+            <li>
+              <Link to={`/shop`}  className="nav-link" >Shop</Link>            
+            </li>            
           </ul>    
         </div>
         <div className="float-right" style={{padding: "15px"}} >

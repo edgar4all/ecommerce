@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import ItemDetail from "../components/ItemDetail";
+import ItemCard from "../components/ItemCard";
 import { useParams } from "react-router-dom";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
+import "./ItemListContainer.css";
 
 
 const ItemListContainer = () => {
@@ -33,24 +33,23 @@ const ItemListContainer = () => {
         getProducts();
     }, []); 
     
-    return <>
+    return <div>
         <div style={{ textAlign: "center", padding: "100px" }}>
             <h1>
                 Listado de productos
             </h1>
         </div>
 
-        <div>
-        {products.filter(prod => !id || id == prod.category.trim().replace(" ","").replace("'",""))
-        .map((prod) => {
+        <div className="itemList">
+        {products.map((prod) => {
             return (
-                <>
-                 <ItemDetail key={prod.id} data={prod} />
-                </>
+                <div key={prod.id}>
+                    <ItemCard key={prod.id} data={prod} />
+                </div>                
             );
         })}
         </div>
-    </>
+    </div>
 }
 
 export default ItemListContainer;

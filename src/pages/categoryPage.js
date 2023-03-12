@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import ItemDetail from "../components/ItemDetail";
+import ItemCard from "../components/ItemCard";
 import { db } from "../firebase/firebaseConfig";
 import { collection, getDocs, query, where, documentId } from "firebase/firestore";
+import "./ItemListContainer.css";
 
-const ItemDetailContainer = () => {
+const CategoryPage = () => {
     let {id} = useParams();
     
-    const [product, setProduct] = useState({});    
+    const [products, setProducts] = useState([]);    
 
-    useEffect(() => {/*
-        axios(`https://fakestoreapi.com/products/${id}`).then((res) =>
-          setProduct(res.data)
-        );*/
+    useEffect(() => {
         const getProduct= async () => {
             const q= query(
-                collection(db,"petshop"),where(documentId(),"==",id)                
+                collection(db,"petshop"),where("categoria","==",id)                
             );
             const querySnapshot = await getDocs(q);
             const docs= [];
@@ -23,21 +21,29 @@ const ItemDetailContainer = () => {
                 docs.push({ ...doc.data(), id: doc.id});
             });
             console.log( docs);                
-            setProduct(docs[0]);            
+            setProducts(docs);            
         }
         getProduct();
 
       }, [id]); 
 
     return <>
-        <div style={{ textAlign: "center", padding: "100px" }}>
+        <div >
             <h1>
-                DETALLES DEL PRODUCTO
+                CATEGORIA {id.toUpperCase()}
             </h1>
         </div>
-        
-        <ItemDetail key={product.id} data={product} />
+        <div className="itemList">
+
+        {products.map((product)=>{
+            return (
+                <div key={product.id}>
+                    <ItemCard key={product.id} data={product} />
+                </div>                
+            );
+        })}
+        </div>
     </>
 }
 
-export default ItemDetailContainer;
+export default CategoryPage;
