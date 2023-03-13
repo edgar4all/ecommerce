@@ -7,7 +7,7 @@ const NavBar = () => {
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         
         <Link to="/" className="navbar-brand" >
-          <img src="/logo.png" style={{ height: "40px", padding: "10px"}} ></img>
+          <img className="logo" src="/logo.png" alt="logo"/>
         </Link>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="/navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
@@ -15,6 +15,9 @@ const NavBar = () => {
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">            
+            <li>
+              <Link to={`/`}  className="nav-link" >Todos los productos</Link>            
+            </li>
             <li>
               <Link to={`/category/perros`}  className="nav-link" >Perros</Link>            
             </li>

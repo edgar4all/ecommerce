@@ -25,7 +25,7 @@ const rows = [
 
 const CartPage= () => {
 
-    const [items,setItems,get_by_id, itemsCount] = useContext(ItemsContext);
+    const [items,setItems,get_by_id, itemsCount, emptyCart] = useContext(ItemsContext);
 
     const calculateTotal = () => {
         return items.map((item)=> item.quantity * item.precio).reduce((a,b) => a+b);        
@@ -53,7 +53,10 @@ const CartPage= () => {
             {items.length > 0 ? (                
             <div>
 
-            
+            <div style={{textAlign:'right' }} >
+                <br />
+                <button onClick={emptyCart}>Vaciar Carrito</button>                                      
+            </div>
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
@@ -89,16 +92,19 @@ const CartPage= () => {
                 </TableBody>
                 </Table>
             </TableContainer>
-            <div style={{textAlign:'right'}} >
+            <div style={{textAlign:'right' }} >
                 <br />
                 <Link to={`/shop`}  className="nav-link" >
-
-                <button>CHECKOUT</button>                
-                </Link>
+                    <button>CHECKOUT</button>                
+                </Link>                    
             </div>
             </div>
             
-            ) : null}
+            ) : 
+            <div style={{textAlign: "center", padding:"200px"}}>
+                <h2>Todavía no hay productos en tu carrito.</h2>
+            </div>
+            }
         </div>
     </div>
     );

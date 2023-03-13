@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 
-// Firebase
 import { db } from "../../firebase/firebaseConfig";
 import { collection, addDoc } from "firebase/firestore";
 
 import MessageSuccess from "../../components/MessageSuccess/MessageSuccess";
+import { ItemsContext } from '../../context/ItemsContext';
+import { useContext } from "react";
 
 import "./Shop.css";
 
@@ -28,6 +29,8 @@ const Shop = () => {
   const [values, setValues] = useState(initialState);
   const [purchaseID, setPurchaseID] = useState("");
 
+  const [items,setItems,get_by_id, itemsCount, emptyCart] = useContext(ItemsContext);
+
   const handleOnChange = (e) => {
     const { value, name } = e.target;
     setValues({ ...values, [name]: value });
@@ -35,7 +38,8 @@ const Shop = () => {
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();    
-    
+    values.items= items;
+
     const docRef = await addDoc(collection(db, "orders"), {
       values,
     });    
