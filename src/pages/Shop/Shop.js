@@ -49,7 +49,7 @@ const Shop = () => {
 
   return (
     <div style={styles.containerShop}>
-      <h1>Shop</h1>
+      <h1>Datos personales</h1>
       <form className="FormContainer" onSubmit={handleOnSubmit}>
         <TextField
           placeholder="Nombre"

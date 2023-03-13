@@ -6,6 +6,10 @@ const CartWidget = () => {
 
     const [items,setItems,get_by_id, itemsCount] = useContext(ItemsContext);
     
+    
+  useEffect(()=>{
+    itemsCount();
+  },[] );
 
     return <>    
         <Link to={`/cart`}  className="nav-link" >

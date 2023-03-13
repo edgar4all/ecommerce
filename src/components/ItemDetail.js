@@ -63,7 +63,7 @@ const Img = styled('img')({
               <br/>
               <button style={{display:"none"}} type="button" className="btn btn-outline-dark btn-sm m-1" disabled="">Stock: {data.stock} unidades.</button>                
               <div className="text-center">
-                <button onClick={addToCart} type="button" className="btn-success btn btn-primary">Agregar al Carrito</button>
+                <button onClick={addToCart()} type="button" className="btn-success btn btn-primary">Agregar al Carrito</button>
               </div>
           </div>
       </div>

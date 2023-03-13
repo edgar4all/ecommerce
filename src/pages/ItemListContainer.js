@@ -39,7 +39,7 @@ const ItemListContainer = () => {
                 Listado de productos
             </h1>
         </div>
-        <div style={{ padding:'100px'}}>
+        <div style={{ padding:'50px'}}>
             <div className="itemList">
             {products.map((prod) => {
                 return (
