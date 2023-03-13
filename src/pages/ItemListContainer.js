@@ -34,20 +34,21 @@ const ItemListContainer = () => {
     }, []); 
     
     return <div>
-        <div style={{ textAlign: "center", padding: "100px" }}>
+        <div className="title">
             <h1>
                 Listado de productos
             </h1>
         </div>
-
-        <div className="itemList">
-        {products.map((prod) => {
-            return (
-                <div key={prod.id}>
-                    <ItemCard key={prod.id} data={prod} />
-                </div>                
-            );
-        })}
+        <div style={{ padding:'100px'}}>
+            <div className="itemList">
+            {products.map((prod) => {
+                return (
+                    <div key={prod.id}>
+                        <ItemCard key={prod.id} data={prod} />
+                    </div>                
+                );
+            })}
+            </div>
         </div>
     </div>
 }

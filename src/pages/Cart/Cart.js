@@ -7,6 +7,9 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { ItemsContext } from '../../context/ItemsContext';
+import { useContext } from 'react';
+import { textAlign } from '@mui/system';
+import { Link } from 'react-router-dom';
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -22,23 +25,34 @@ const rows = [
 
 const CartPage= () => {
 
-    const [items,setItems] = React.useContext(ItemsContext);
-    
+    const [items,setItems,get_by_id, itemsCount] = useContext(ItemsContext);
 
     const calculateTotal = () => {
         return items.map((item)=> item.quantity * item.precio).reduce((a,b) => a+b);        
     }
-    const quitar= (id)=>{
-        setItems(items.filter((i) => i.id !== id));
+    const quitar= (id)=>{   
+        
+        let found = get_by_id(id);        
+        if(found[0].quantity > 1) {      
+            found[0].quantity -=1
+            setItems(items);
+        }
+        else{
+            setItems(items.filter((i) => i.id !== id));
+        }    
+          
+
     }
 
     return (
     <div>
         <div id='table container' style={{width:"90%" }}>
-            <h1 style={{textAlign:'center'}}>
-                {items.length} productos en el carrito.
+            <h1 style={{textAlign:'center', display: 'none'}}>
+                {itemsCount()} productos en el carrito.
             </h1>
             {items.length > 0 ? (                
+            <div>
+
             
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -75,6 +89,15 @@ const CartPage= () => {
                 </TableBody>
                 </Table>
             </TableContainer>
+            <div style={{textAlign:'right'}} >
+                <br />
+                <Link to={`/shop`}  className="nav-link" >
+
+                <button>CHECKOUT</button>                
+                </Link>
+            </div>
+            </div>
+            
             ) : null}
         </div>
     </div>

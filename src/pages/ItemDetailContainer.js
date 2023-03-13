@@ -22,7 +22,7 @@ const ItemDetailContainer = () => {
             querySnapshot.forEach((doc)=> {
                 docs.push({ ...doc.data(), id: doc.id});
             });
-            console.log( docs);                
+            //console.log( docs);                
             setProduct(docs[0]);            
         }
         getProduct();

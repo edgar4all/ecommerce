@@ -25,10 +25,7 @@ const NavBar = () => {
               <Link to={`/category/accesorios`}  className="nav-link" >Accesorios</Link>            
             </li>
             <li>
-              <Link to={`/shop`}  className="nav-link" >Shop</Link>            
-            </li>            
-            <li>
-              <Link to={`/cart`}  className="nav-link" >Cart</Link>            
+              <Link to={`/cart`}  className="nav-link" >Carrito</Link>            
             </li>     
           </ul>    
         </div>
@@ -36,7 +33,9 @@ const NavBar = () => {
               <CartWidget/>
         </div>
       </nav>
-
+      <div style={{textAlign:'center'}}>
+        <img src="/banner-mascotas.jpg" alt="mascotas" />
+      </div>
     </>
 }
 

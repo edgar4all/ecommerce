@@ -14,17 +14,17 @@ function App() {
   return (
     <Router>
       <ItemsProvider>
-      <div>    
-        <NavBar />
-        <Routes>
-            <Route path="/" element={<ItemListContainer />} />
-            <Route path="/category/:id" element={<CategoryPage />} />
-            <Route path="/item/:id" element={<ItemDetailContainer  />} />
-            <Route path="/shop" element={<Shop />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path='*' element={<Error />} />
-        </Routes>
-      </div>
+        <div>    
+          <NavBar />
+          <Routes>
+              <Route path="/" element={<ItemListContainer />} />
+              <Route path="/category/:id" element={<CategoryPage />} />
+              <Route path="/item/:id" element={<ItemDetailContainer  />} />
+              <Route path="/shop" element={<Shop />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path='*' element={<Error />} />
+          </Routes>
+        </div>
       </ItemsProvider>
     </Router>
   );

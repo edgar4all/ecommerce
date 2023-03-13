@@ -2,14 +2,23 @@ import React, { useState, createContext } from "react";
 
 export const ItemsContext = createContext();
 
-const initialState = () => [];
-
 export const ItemsProvider = ({ children }) => {
-  const [items, setItems] = useState(initialState);
+    
+    const initialState = () => [];
+    
+    const get_by_id = (id) => { 
+        return items.filter((i) => i.id === id);
+    };
 
-  return (
-    <ItemsContext.Provider value={[items, setItems]}>
-      {children}
-    </ItemsContext.Provider>
-  );
+    const itemsCount= () => {        
+        return items.reduce((total, item) => total + item.quantity, 0);
+    }
+
+    const [items, setItems] = useState(initialState);
+
+    return (
+        <ItemsContext.Provider value={[items, setItems, get_by_id, itemsCount]}>
+            {children}
+        </ItemsContext.Provider>
+    );
 };

@@ -28,7 +28,7 @@ const CategoryPage = () => {
       }, [id]); 
 
     return <>
-        <div >
+        <div className="title" >
             <h1>
                 CATEGORIA {id.toUpperCase()}
             </h1>

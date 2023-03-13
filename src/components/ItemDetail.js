@@ -25,17 +25,22 @@ const Img = styled('img')({
     (count < data.stock) && setCount(count +1 );
   }
 
-  const [items,setItems] = useContext(ItemsContext);
-
+ 
   const addToCart = () => {
-    if(items.indexOf(data) < 0) {
-      data.quantity=2;
-      setItems([...items, data]);
+    let found = get_by_id(data.id);
+    console.log(found);
+    if(found[0]) {      
+      found[0].quantity +=1
+      setItems(items);
     }
     else{
-      //sumar al ya existente cantidad en 1 
-    }
+      data.quantity=1;
+      setItems([...items, data]);          
+    }    
+    console.log(items);
   }
+  
+  const [items,setItems,get_by_id] = useContext(ItemsContext);
 
   return <div className="text-center">    
 
