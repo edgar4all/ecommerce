@@ -35,7 +35,7 @@ const CartPage= () => {
         let found = get_by_id(id);        
         if(found[0].quantity > 1) {      
             found[0].quantity -=1
-            setItems(items);
+            setItems([...items]);
         }
         else{
             setItems(items.filter((i) => i.id !== id));
